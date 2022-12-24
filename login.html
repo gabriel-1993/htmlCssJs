@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/mediaqueries.css" />
+    <link rel="stylesheet" href="./assets/animaciones.css" />
+    <title>Kilometro 0 | Usuarios</title>
+  </head>
+  <body>
+    <header>
+      <img src="./assets/img/logo.png" class="logo" alt="logobrujula" />
+      <nav>
+        <!-- ------------------------------------------    MENU HAMBURGUESA    ---------------------------------------------- -->
+        <label for="menu-toggle" class="menu-label">
+          <i class="fa-solid fa-bars menu-icon"></i>
+        </label>
+        <input type="checkbox" id="menu-toggle" />
+        <ul class="navbar-list">
+          <li><a class="navbar-a" href="./index.html">Inicio</a></li>
+          <li>
+            <a class="navbar-a" href="./index.html">Beneficios</a>
+          </li>
+          <li><a class="navbar-a" href="./index.html">Destinos</a></li>
+          <li><a class="navbar-a" href="./index.html">Contacto</a></li>
+        </ul>
+
+        <!-- ------------------------------------------    CARRO DE COMPRAS    --------------------------------------------- -->
+        <label for="cart-toggle" class="cart-label">
+          <i class="fa-solid fa-cart-shopping cart-icon"></i>
+        </label>
+        <input type="checkbox" id="cart-toggle" />
+        <div class="divcarro">
+          <h2>Tus compras</h2>
+          <div class="cart-item">
+            <img
+              src="./assets/img/venezuela.jpg"
+              alt="paisajevenezuela"
+              class="carro-imgvene"
+            />
+            <div class="item-info">
+              <div class="item-bid-info">
+                <h3 class="item-title">Venezuela</h3>
+                <p class="item-bid">Viaje y Hospedaje 7 días</p>
+                <p class="item-bid">1 Persona</p>
+              </div>
+              <div class="item-bid-price">
+                <span class="item-price">$845</span>
+              </div>
+            </div>
+            <div class="item-handler">
+              <span class="quantity-handler down btn-">-</span>
+              <span class="quantity-handler cant-per">1</span>
+              <span class="quantity-handler up btn">+</span>
+            </div>
+          </div>
+          <span class="divider"></span>
+          <div class="card-total">
+            <p>Total</p>
+            <span>$845</span>
+          </div>
+          <button class="btn-add btn">Confirmar compra</button>
+        </div>
+        <!-- Para hacer el desenfoque detras del carrito -->
+        <div class="overlay"></div>
+        <!-- ----------------------------------------------  Fin carro de compras ---------------------------------------------- -->
+        <a href="./login.html" class="logousuarios"
+          ><i class="fa-solid fa-user logousuario"></i
+        ></a>
+      </nav>
+    </header>
+    <main>
+      <section class="section-login">
+        <div class="divcontenedorlogin">
+          <div class="divIniciar">
+            <h2>Iniciar sesión</h2>
+            <div>
+              <div>
+                <input
+                  class="registrarse"
+                  name="name"
+                  id="name"
+                  type="text"
+                  placeholder="Usuario"
+                  placeholder="Ingrese
+                      nombre completo"
+                />
+              </div>
+              <div>
+                <input
+                  class="registrarse"
+                  name="password"
+                  id="contraseña"
+                  type="password"
+                  placeholder="Contraseña"
+                  placeholder="Contraseña"
+                  required
+                />
+              </div>
+              <button class="btn-contraseña btn">Recuperar contraseña</button>
+              <a href="./index.html"
+                ><button class="btn-Iniciar btn">Ingresar</button></a
+              >
+            </div>
+          </div>
+
+          <div class="divRegistrarse">
+            <h2>Crear cuenta</h2>
+            <div>
+              <input
+                class="registrarse"
+                name="name"
+                id="name"
+                type="text"
+                placeholder="Nombre completo"
+                placeholder="Ingrese
+                    nombre completo"
+              />
+            </div>
+            <div>
+              <input
+                class="registrarse"
+                name="correo"
+                id="correo"
+                type="text"
+                placeholder="E-mail"
+                placeholder="E-mail"
+                required
+              />
+            </div>
+            <div>
+              <input
+                class="registrarse"
+                name="Usuario"
+                id="usuario"
+                type="text"
+                placeholder="Usuario"
+                placeholder="Usuario"
+              />
+            </div>
+            <div>
+              <input
+                class="registrarse"
+                name="password"
+                id="contraseña"
+                type="password"
+                placeholder="Contraseña"
+                placeholder="Contraseña"
+                required
+              />
+            </div>
+
+            <div class="div-label">
+              <input type="checkbox" id="checkbox1" />
+              <label for="checkbox1" class="label-registrarse"
+                >"Deseo que me envien novedades y descuentos a mi E-mail"</label
+              >
+            </div>
+            <div class="div-label">
+              <input type="checkbox" id="checkbox2" />
+              <label for="checkbox2" class="label-registrarse"
+                >"Declaro que lei los terminos y condiciones"</label
+              >
+            </div>
+            <button class="btn-leer btn">Leer</button>
+
+            <a href="./index.html"
+              ><input
+                type="submit"
+                value="Registrarse"
+                class="submit-registro btn"
+            /></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-div-logo">
+        <img
+          src="./assets/img/logo-footer.png"
+          href="index.html"
+          class="logok0footer"
+          alt="logobrujula"
+        />
+      </div>
+      <p>
+        Copyright ©2022 Todos los derechos reservados | <span>Kilometro 0</span>
+      </p>
+      <div class="footer-div-logos">
+        <a href="https://www.facebook.com/" target="_blank"
+          ><i class="fa-brands fa-square-facebook logofooter"></i
+        ></a>
+        <a href="https://www.instagram.com/" target="_blank"
+          ><i class="fa-brands fa-instagram logofooter"></i
+        ></a>
+        <a href="https://twitter.com/?lang=es" target="_blank"
+          ><i class="fa-brands fa-square-twitter logofooter"></i
+        ></a>
+        <a href="https://www.youtube.com/" target="_blank"
+          ><i class="fa-brands fa-youtube logofooter"></i
+        ></a>
+      </div>
+    </footer>
+  </body>
+</html>
