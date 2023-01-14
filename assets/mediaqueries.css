@@ -54,7 +54,13 @@
   .card-icon {
     height: 40px;
   }
+  .menu-label {
+    display: flex;
+  }
 
+  .open-menu {
+    display: flex;
+  }
   /*---------------------------------------     USUARIOS  login.html    --------------------------------------*/
   .section-login {
     overflow: auto;

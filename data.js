@@ -111,6 +111,16 @@ const destinosList = [
 const divDestinos = document.querySelector(".divdestinos");
 // Capturar card destino que se ingresa mediante js
 const cardContainer = document.querySelector(".card-destino");
+// capturar boton comprar de cards
+const boton = document.getElementById(`agregar$(destino.id)`);
+// capturar logo del carro
+const logoCarro = document.querySelector(".cart-icon");
+// capturar div del carro de compras
+const divCarro = document.querySelector(".divcarro");
+// capturar logo menu hamburguesa
+const logoMenuResponsive = document.querySelector(".menu-icon");
+// capturar navbarlist responsive
+const menuResponsive = document.querySelector(".navbar-list");
 
 // Recorrer el array de destinos
 const destinos = destinosList.map((destino) => {
@@ -124,7 +134,7 @@ const destinos = destinosList.map((destino) => {
           <p>${destino.descripcion}</p>
           <span> $${destino.precio}</span>
           </div>
-          <button class="btn">Comprar</button>
+          <button class="btn btnAgregar">Comprar</button>
       </div>
     </div>
   </div>
@@ -134,4 +144,26 @@ const destinos = destinosList.map((destino) => {
 //Renderizar en el divDestinos lo que guarde en destinos
 divDestinos.innerHTML = destinos.join("");
 
+// Renderizar Menu Hamburguesa
+const mostrarMenuResp = () => {
+  menuResponsive.classList.toggle("open-menu");
+};
+
+const init = () => {
+  logoMenuResponsive.addEventListener("click", mostrarMenuResp);
+};
+
+init();
+
 // RENDERIZAR CARRO DE COMPRAS
+// let carrito = [];
+
+// boton.addEventListener("click", () => {
+//   agregarAlCarrito(destino.id);
+// });
+
+// const agregarAlCarrito = (destinoId) => {
+//   const item = stockProductos.find((prod) => destino.id === destino.id);
+//   carrito.push(item);
+//   console.log(carrito);
+// };

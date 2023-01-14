@@ -81,6 +81,160 @@ nav {
   color: var(--color1);
 }
 
+.divcarro {
+  position: absolute;
+  top: 75px;
+  right: 0;
+  padding: 8px 35px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(235, 226, 226),
+    rgb(161, 161, 161)
+  );
+  flex-direction: column;
+  gap: 30px;
+  height: 100vh;
+  z-index: 2;
+  overflow-y: scroll;
+  display: none;
+}
+
+.carro-imgvene {
+  height: 150px;
+  width: 100%;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.divcarro::-webkit-scrollbar {
+  display: none;
+}
+
+.cart-item {
+  border: solid 2px var(--color5);
+  border-radius: 15px;
+}
+
+.item-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.item-bid-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.item-bid-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-bid-price span {
+  color: var(--color1);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.divcarro h2 {
+  color: var(--color3);
+  font-size: 22px;
+  font-weight: 800;
+}
+.divcarro-item {
+  display: flexa;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.divcarro-item img {
+  height: 165px;
+  width: 65px;
+}
+
+.item-title {
+  color: var(--color3);
+  font-weight: 800;
+  font-size: 19px;
+}
+
+.item-bid {
+  color: var(--color1);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.item-handler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.quantity-handler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.up {
+  background: var(--color3);
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+.cant-per {
+  color: var(--color1);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.divider {
+  margin-top: 5px;
+  border: 0.5px solid var(--color5);
+}
+.card-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.card-total p {
+  color: #ff6347;
+  font-weight: 700;
+}
+
+.card-total span {
+  color: #ff6347;
+  font-weight: 600;
+  font-size: 18px;
+}
+.btn-add {
+  padding: 14px;
+  color: var(--color5);
+  font-size: 17px;
+  background: var(--color3);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+
+#cart-toggle {
+  display: none;
+}
+
+#cart-toggle:checked + .divcarro {
+  display: flex;
+}
+
 /*---------------------------------------     USUARIOS  login.html    --------------------------------------*/
 .section-login {
   margin-top: 75px;
@@ -386,9 +540,25 @@ main {
 /* -------------------------------------    Destinos    -------------------------------------- */
 #maindestinos {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--color5);
+}
+.categories {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+.category {
+  background-color: var(--color2);
+  width: 100px;
+  padding: 7px 0;
+  border: none;
+  color: var(--background);
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 10px;
 }
 
 .divdestinos {
@@ -455,8 +625,8 @@ main {
 }
 
 .down-items button {
-  padding: 10px 22px;
-  border-radius: 15px;
+  padding: 8px 16px;
+  border-radius: 10px;
   border: none;
   background: var(--color3);
   font-size: 18px;
