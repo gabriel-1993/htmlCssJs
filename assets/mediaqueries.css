@@ -41,9 +41,7 @@
     height: 40px;
     width: 40px;
   }
-  #menu-toggle:checked + .navbar-list {
-    display: flex;
-  }
+
   .menu-icon {
     margin-right: 15px;
     font-size: 26px;
@@ -53,9 +51,6 @@
   /* Borde Carrito */
   .card-icon {
     height: 40px;
-  }
-  .menu-label {
-    display: flex;
   }
 
   .open-menu {
