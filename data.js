@@ -107,18 +107,7 @@ const destinosList = [
   },
 ];
 // RENDERIZAR DESTINOS
-// Capturarr el div del html destinos
-const divDestinos = document.querySelector(".divdestinos");
-// Capturar card destino que se ingresa mediante js
-const cardContainer = document.querySelector(".card-destino");
-// capturar boton comprar de cards
-const boton = document.getElementById(`agregar$(destino.id)`);
-// capturar logo del carro
-const logoCarro = document.querySelector(".cart-icon");
-// capturar div del carro de compras
-const divCarro = document.querySelector(".divcarro");
-
-const destinos = destinosList.map((destino) => {
+const renderizarDestinos = (destino) => {
   return `
   <div class="card-destino">
     <img src="${destino.imagen}" class="dimg"/>
@@ -129,17 +118,19 @@ const destinos = destinosList.map((destino) => {
           <p>${destino.descripcion}</p>
           <span> $${destino.precio}</span>
           </div>
-          <button class="btn">Comprar</button>
+          <button class="btn"
+                  data-id="${destino.id}"
+                  data-nombre="${destino.nombre}"
+                  data-precio="${destino.precio}"
+                  data-imagen="${destino.imagen}"
+                  >Comprar</button>
       </div>
     </div>
   </div>
   `;
+};
+const destinos = destinosList.map((destino) => {
+  return renderizarDestinos;
 });
 
 divDestinos.innerHTML = destinos.join("");
-
-// BUSCAR Y GUARDAR EN localStorage(carrito)
-// let cart = JSON.parse(localStorage.getItem("cart")) || [];
-// const saveLocalStorage = (cartList) => {
-//   localStorage.setItem("cart", JSON.stringify(cartList));
-// };
