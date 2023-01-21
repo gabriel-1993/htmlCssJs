@@ -560,7 +560,9 @@ main {
   font-weight: 600;
   border-radius: 10px;
 }
-
+.active {
+  background-color: red;
+}
 .divdestinos {
   min-height: 100vh;
   width: min(100%, 1300px);

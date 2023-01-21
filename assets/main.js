@@ -12,14 +12,16 @@ const divCarro = document.querySelector(".divcarro");
 const menuResponsive = document.querySelector(".navbar-list");
 // capturar logo menu hamburguesa
 const logoMenuResponsive = document.querySelector(".menu-icon");
+// Html colection de los botones de categorias
+const btnsCategorias = document.querySelector(".categorias");
 
 // LocalStorage
 // BUSCAR Y GUARDAR EN localStorage(carrito)
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-const saveLocalStorage = (cartList) => {};
-localStorage.setItem("cart", JSON.stringify(cartList));
+// let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// const saveLocalStorage = (cartList) => {};
+// localStorage.setItem("cart", JSON.stringify(cartList));
 
-// Renderizar destinos por categoria
+// Renderizar destinos por categoria ,si no hay categoria renderizar todos.
 const renderizarCards = (categoria = undefined) => {
   if (!categoria) {
     divDestinos.innerHTML = destinosTodos.join("");
@@ -30,8 +32,42 @@ const renderizarCards = (categoria = undefined) => {
   });
   divDestinos.innerHTML = destinosFiltrados.map().join("");
 };
+
+// Cambiar de color el boton seleccionado en categorias
+const pintarBtnSelec = (categoriaSeleccionada) => {
+  const arrayCategorias = [...btnsCategorias];
+  arrayCategorias.forEach((categoriaBtn) => {
+    if (categoriaBtn.dataset.categoria !== categoriaSeleccionada) {
+      categoriaBtn.classList.remove("active");
+      return;
+    }
+    categoriaBtn.classList.add("active");
+  });
+};
+
+const cambiarCategoria = (e) => {
+  const categoriaSeleccionada = e.target.dataset.categoria;
+  pintarBtnSelec(categoriaSeleccionada);
+};
+
+// Renderizar categoria filtrada
+
+const aplicarFiltro = (e) => {
+  if (!e.target.classList.contains("categoria")) {
+    return;
+  } else {
+    cambiarCategoria(e);
+  }
+  if (!e.target.dataset.categoria) {
+    renderizarCards();
+  } else {
+    renderizarCards(e.target.dataset.categoria);
+  }
+};
+
 const init = () => {
   renderizarCards();
+  btnsCategorias.addEventListener("click", aplicarFiltro);
 };
 
 init();
