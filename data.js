@@ -107,7 +107,7 @@ const destinosList = [
   },
 ];
 // RENDERIZAR DESTINOS
-const renderizarDestinos = (destino) => {
+const cardTemplate = (destino) => {
   return `
   <div class="card-destino">
     <img src="${destino.imagen}" class="dimg"/>
@@ -129,8 +129,4 @@ const renderizarDestinos = (destino) => {
   </div>
   `;
 };
-const destinos = destinosList.map((destino) => {
-  return renderizarDestinos;
-});
-
-divDestinos.innerHTML = destinos.join("");
+const destinosTodos = destinosList.map(cardTemplate);

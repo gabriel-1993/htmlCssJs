@@ -20,16 +20,22 @@ const saveLocalStorage = (cartList) => {};
 localStorage.setItem("cart", JSON.stringify(cartList));
 
 // Renderizar destinos por categoria
-// const renderizarCategoria = (categoria = undefined) => {
-//   if (!categoria) {
-//     ("funcion que renderize productos divididos");
-//     ("return");
-//   }
-//   const destinosFiltrados = destinosList.filter((destino) => {
-//     return destino.categoria === categoria;
-//   });
-//   divDestinos.innerHTML = destinosFiltrados.map().join("");
-// };
+const renderizarCards = (categoria = undefined) => {
+  if (!categoria) {
+    divDestinos.innerHTML = destinosTodos.join("");
+    return;
+  }
+  const destinosFiltrados = destinosList.filter((destino) => {
+    return destino.categoria === categoria;
+  });
+  divDestinos.innerHTML = destinosFiltrados.map().join("");
+};
+const init = () => {
+  renderizarCards();
+};
+
+init();
+
 // // Renderizar sin categoria
 // const renderizarTodos = () => {
 //   divDestinos.innerHTML = destinos.join("");
