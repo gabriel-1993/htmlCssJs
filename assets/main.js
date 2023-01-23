@@ -42,7 +42,7 @@ const renderFilteredProducts = (category) => {
 const pintarBtnSelec = (categoriaSeleccionada) => {
   const arrayCategorias = [...btnsCategorias];
   arrayCategorias.forEach((categoriaBtn) => {
-    if (categoriaBtn.dataset.categoria !== categoriaSeleccionada) {
+    if (categoriaBtn.dataset.category !== categoriaSeleccionada) {
       categoriaBtn.classList.remove("active");
       return;
     }
