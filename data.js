@@ -39,7 +39,7 @@ const destinosList = [
     imagen: "./assets/img/peru.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "America",
+    category: "America",
   },
   {
     id: 2,
@@ -47,7 +47,7 @@ const destinosList = [
     imagen: "./assets/img/italia.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "Europa",
+    category: "Europa",
   },
   {
     id: 3,
@@ -55,7 +55,7 @@ const destinosList = [
     imagen: "./assets/img/brasil.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "America",
+    category: "America",
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const destinosList = [
     imagen: "./assets/img/venecia.avif",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "Europa",
+    category: "Europa",
   },
   {
     id: 5,
@@ -71,7 +71,7 @@ const destinosList = [
     imagen: "./assets/img/venezuela.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "America",
+    category: "America",
   },
   {
     id: 6,
@@ -79,7 +79,7 @@ const destinosList = [
     imagen: "./assets/img/patagonia.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "America",
+    category: "America",
   },
   {
     id: 7,
@@ -87,7 +87,7 @@ const destinosList = [
     imagen: "./assets/img/cataratas.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "America",
+    category: "America",
   },
   {
     id: 8,
@@ -95,7 +95,7 @@ const destinosList = [
     imagen: "./assets/img/bariloche.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "America",
+    category: "America",
   },
   {
     id: 9,
@@ -103,7 +103,7 @@ const destinosList = [
     imagen: "./assets/img/egipto.jpg",
     precio: 845,
     descripcion: "7 Dias, hospedaje y viaje ",
-    categoria: "Africa",
+    category: "Africa",
   },
 ];
 // RENDERIZAR DESTINOS

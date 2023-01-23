@@ -22,15 +22,20 @@ const btnsCategorias = document.querySelector(".categorias");
 // localStorage.setItem("cart", JSON.stringify(cartList));
 
 // Renderizar destinos por categoria ,si no hay categoria renderizar todos.
-const renderizarCards = (categoria = undefined) => {
-  if (!categoria) {
+const renderizarCards = (category = undefined) => {
+  if (!category) {
     divDestinos.innerHTML = destinosTodos.join("");
     return;
   }
-  const destinosFiltrados = destinosList.filter((destino) => {
-    return destino.categoria === categoria;
+  renderFilteredProducts(category);
+};
+
+// Productos filtrados
+const renderFilteredProducts = (category) => {
+  const productsList = destinosList.filter((product) => {
+    return product.category === category;
   });
-  divDestinos.innerHTML = destinosFiltrados.map().join("");
+  divDestinos.innerHTML = productsList.map(cardTemplate).join("");
 };
 
 // Cambiar de color el boton seleccionado en categorias
@@ -45,23 +50,24 @@ const pintarBtnSelec = (categoriaSeleccionada) => {
   });
 };
 
-const cambiarCategoria = (e) => {
-  const categoriaSeleccionada = e.target.dataset.categoria;
+const changeFilterState = (e) => {
+  const categoriaSeleccionada = e.target.dataset.category;
   pintarBtnSelec(categoriaSeleccionada);
 };
 
-// Renderizar categoria filtrada
+// AplicarFiltro
 
 const aplicarFiltro = (e) => {
-  if (!e.target.classList.contains("categoria")) {
+  if (e.target.classList.contains("category")) {
     return;
   } else {
-    cambiarCategoria(e);
+    changeFilterState(e);
   }
-  if (!e.target.dataset.categoria) {
+  if (e.target.dataset.category) {
+    divDestinos.innerHTML = "";
     renderizarCards();
   } else {
-    renderizarCards(e.target.dataset.categoria);
+    renderizarCards(e.target.dataset.category);
   }
 };
 
@@ -72,13 +78,8 @@ const init = () => {
 
 init();
 
-// // Renderizar sin categoria
-// const renderizarTodos = () => {
-//   divDestinos.innerHTML = destinos.join("");
-// };
 // Renderizar Menu Hamburguesa
 const mostrarMenuResp = () => {
   menuResponsive.classList.toggle("open-menu");
 };
-
-// logoMenuResponsive.addEventListener("click", mostrarMenuResp);
+logoMenuResponsive.addEventListener("click", mostrarMenuResp);
