@@ -14,6 +14,7 @@ const menuResponsive = document.querySelector(".navbar-list");
 const logoMenuResponsive = document.querySelector(".menu-icon");
 // Html colection de los botones de categorias
 const btnsCategorias = document.querySelector(".categorias");
+const listaCategorias = document.querySelectorAll('.category')
 
 // LocalStorage
 // BUSCAR Y GUARDAR EN localStorage(carrito)
@@ -40,7 +41,7 @@ const renderFilteredProducts = (category) => {
 
 // Cambiar de color el boton seleccionado en categorias
 const pintarBtnSelec = (categoriaSeleccionada) => {
-  const arrayCategorias = [...btnsCategorias];
+  const arrayCategorias = [...listaCategorias];
   arrayCategorias.forEach((categoriaBtn) => {
     if (categoriaBtn.dataset.category !== categoriaSeleccionada) {
       categoriaBtn.classList.remove("active");
@@ -58,15 +59,20 @@ const changeFilterState = (e) => {
 // AplicarFiltro
 
 const aplicarFiltro = (e) => {
-  if (e.target.classList.contains("category")) {
+  console.log(e.target.dataset.category);
+  if (!e.target.classList.contains("category")) {
     return;
   } else {
     changeFilterState(e);
   }
-  if (e.target.dataset.category) {
+  if (!e.target.dataset.category)
+  {
+    console.log('SIN CATEGORY');
     divDestinos.innerHTML = "";
     renderizarCards();
-  } else {
+  } else
+  {
+    console.log('PASOOOO');
     renderizarCards(e.target.dataset.category);
   }
 };
