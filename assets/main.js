@@ -14,6 +14,7 @@ const menuResponsive = document.querySelector(".navbar-list");
 const logoMenuResponsive = document.querySelector(".menu-icon");
 // Html colection de los botones de categorias
 const btnsCategorias = document.querySelector(".categorias");
+
 const listaCategorias = document.querySelectorAll(".category");
 
 // LocalStorage
@@ -66,11 +67,9 @@ const aplicarFiltro = (e) => {
     changeFilterState(e);
   }
   if (!e.target.dataset.category) {
-    console.log("SIN CATEGORY");
     divDestinos.innerHTML = "";
     renderizarCards();
   } else {
-    console.log("PASOOOO");
     renderizarCards(e.target.dataset.category);
   }
 };
