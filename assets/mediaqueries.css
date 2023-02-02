@@ -28,6 +28,11 @@
     z-index: 2;
     display: none;
   }
+
+  /* Mostra/Ocultar menu responsive */
+  .open-menu {
+    display: flex;
+  }
   .navbar-list a {
     font-size: 18px;
     font-weight: 800;
@@ -53,9 +58,6 @@
     height: 40px;
   }
 
-  .open-menu {
-    display: flex;
-  }
   /*---------------------------------------     USUARIOS  login.html    --------------------------------------*/
   .section-login {
     overflow: auto;

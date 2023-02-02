@@ -66,7 +66,7 @@ const aplicarFiltro = (e) => {
     changeFilterState(e);
   }
   if (!e.target.dataset.category) {
-    console.log("Sin category");
+    console.log("SIN CATEGORY");
     divDestinos.innerHTML = "";
     renderizarCards();
   } else {
@@ -75,15 +75,26 @@ const aplicarFiltro = (e) => {
   }
 };
 
-const init = () => {
-  renderizarCards();
-  btnsCategorias.addEventListener("click", aplicarFiltro);
-};
-
-init();
-
 // Renderizar Menu Hamburguesa
 const mostrarMenuResp = () => {
   menuResponsive.classList.toggle("open-menu");
+  if (divCarro.classList.toggle("open-cart")) {
+    divCarro.classList.remove("open-cart");
+  }
 };
-logoMenuResponsive.addEventListener("click", mostrarMenuResp);
+// Renderizar Carro de compras
+const mostrarCarro = () => {
+  divCarro.classList.toggle("open-cart");
+  if (menuResponsive.classList.toggle("open-menu")) {
+    menuResponsive.classList.remove("open-menu");
+  }
+};
+
+const init = () => {
+  renderizarCards();
+  btnsCategorias.addEventListener("click", aplicarFiltro);
+  logoMenuResponsive.addEventListener("click", mostrarMenuResp);
+  logoCarro.addEventListener("click", mostrarCarro);
+};
+
+init();
