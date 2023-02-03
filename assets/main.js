@@ -75,26 +75,35 @@ const aplicarFiltro = (e) => {
     renderizarCards(e.target.dataset.category);
   }
 };
-
+// Renderizar Carro de compras
+const mostrarCarro = () => {
+  divCarro.classList.toggle("open-cart");
+  if (menuResponsive.classList.contains("open-menu")) {
+    menuResponsive.classList.remove("open-menu");
+    return;
+  }
+  overlay.classList.toggle("show-overlay");
+};
 // Renderizar Menu Hamburguesa
 const mostrarMenuResp = () => {
   menuResponsive.classList.toggle("open-menu");
-  if (divCarro.classList.toggle("open-cart")) {
+  if (divCarro.classList.contains("open-cart")) {
     divCarro.classList.remove("open-cart");
     return;
   }
   overlay.classList.toggle("show-overlay");
 };
+
 // Ocultar Menu si hacemos click en un enlace
 const ocultarMenuClickEnlace = (e) => {
   if (!e.target.classList.contains("navbar-a")) {
     return;
   }
   menuResponsive.classList.remove("open-menu");
+  overlay.classList.remove("show-overlay");
 };
 
 // Ocultar Menu o Carrito si scrolleamos
-
 const ocultarOnScroll = (e) => {
   if (
     menuResponsive.classList.contains("open-menu") ||
@@ -102,24 +111,15 @@ const ocultarOnScroll = (e) => {
   ) {
     menuResponsive.classList.remove("open-menu");
     divCarro.classList.remove("open-cart");
+    overlay.classList.remove("show-overlay");
   }
 };
 // Ocultar Menu o Carrito si hacemos click fuera del que estemos
 
-// const ocultarOnClickAfuera = () => {
-//   if (
-
-//   )
-//   menuResponsive.classList.remove("open-menu");
-//   divCarro.classList.remove("open-cart");
-// };
-
-// Renderizar Carro de compras
-const mostrarCarro = () => {
-  divCarro.classList.toggle("open-cart");
-  if (menuResponsive.classList.toggle("open-menu")) {
-    menuResponsive.classList.remove("open-menu");
-  }
+const ocultarOnClickAfuera = () => {
+  menuResponsive.classList.remove("open-menu");
+  divCarro.classList.remove("open-cart");
+  overlay.classList.remove("show-overlay");
 };
 
 const init = () => {
@@ -129,6 +129,7 @@ const init = () => {
   logoCarro.addEventListener("click", mostrarCarro);
   menuResponsive.addEventListener("click", ocultarMenuClickEnlace);
   window.addEventListener("scroll", ocultarOnScroll);
+  overlay.addEventListener("click", ocultarOnClickAfuera);
 };
 
 init();
