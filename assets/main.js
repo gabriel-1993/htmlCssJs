@@ -14,6 +14,8 @@ const menuResponsive = document.querySelector(".navbar-list");
 const logoMenuResponsive = document.querySelector(".menu-icon");
 // Html colection de los botones de categorias
 const btnsCategorias = document.querySelector(".categorias");
+//  Overlay para tirar facha abajo del menú hamburguesa y el cart.
+const overlay = document.querySelector(".overlay");
 
 const listaCategorias = document.querySelectorAll(".category");
 
@@ -79,8 +81,39 @@ const mostrarMenuResp = () => {
   menuResponsive.classList.toggle("open-menu");
   if (divCarro.classList.toggle("open-cart")) {
     divCarro.classList.remove("open-cart");
+    return;
+  }
+  overlay.classList.toggle("show-overlay");
+};
+// Ocultar Menu si hacemos click en un enlace
+const ocultarMenuClickEnlace = (e) => {
+  if (!e.target.classList.contains("navbar-a")) {
+    return;
+  }
+  menuResponsive.classList.remove("open-menu");
+};
+
+// Ocultar Menu o Carrito si scrolleamos
+
+const ocultarOnScroll = (e) => {
+  if (
+    menuResponsive.classList.contains("open-menu") ||
+    divCarro.classList.contains("open-cart")
+  ) {
+    menuResponsive.classList.remove("open-menu");
+    divCarro.classList.remove("open-cart");
   }
 };
+// Ocultar Menu o Carrito si hacemos click fuera del que estemos
+
+// const ocultarOnClickAfuera = () => {
+//   if (
+
+//   )
+//   menuResponsive.classList.remove("open-menu");
+//   divCarro.classList.remove("open-cart");
+// };
+
 // Renderizar Carro de compras
 const mostrarCarro = () => {
   divCarro.classList.toggle("open-cart");
@@ -94,6 +127,8 @@ const init = () => {
   btnsCategorias.addEventListener("click", aplicarFiltro);
   logoMenuResponsive.addEventListener("click", mostrarMenuResp);
   logoCarro.addEventListener("click", mostrarCarro);
+  menuResponsive.addEventListener("click", ocultarMenuClickEnlace);
+  window.addEventListener("scroll", ocultarOnScroll);
 };
 
 init();
