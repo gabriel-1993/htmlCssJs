@@ -6,8 +6,12 @@ const cardContainer = document.querySelector(".card-destino");
 const boton = document.getElementById(`agregar$(destino.id)`);
 // capturar logo del carro
 const logoCarro = document.querySelector(".cart-icon");
-// capturar div del carro de compras
+// capturar div general del carro de compras
 const divCarro = document.querySelector(".divcarro");
+// capturar div para renderizar cards en el carrito
+const cartContainer = document.querySelector(".cart-container");
+// capturar el total del carrito
+const precioTotal = document.querySelector(".total");
 // capturar navbarlist responsive
 const menuResponsive = document.querySelector(".navbar-list");
 // capturar logo menu hamburguesa
@@ -21,9 +25,10 @@ const listaCategorias = document.querySelectorAll(".category");
 
 // LocalStorage
 // BUSCAR Y GUARDAR EN localStorage(carrito)
-let card = JSON.parse(localStorage.getItem("card")) || [];
-const saveLocalStorage = (cardList) => {};
-localStorage.setItem("card", JSON.stringify(cardList));
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const saveLocalStorage = (cartList) => {
+  localStorage.setItem("cart", JSON.stringify(cartList));
+};
 
 // Renderizar destinos por categoria ,si no hay categoria renderizar todos.
 const renderizarCards = (category = undefined) => {
@@ -122,7 +127,7 @@ const ocultarOnClickAfuera = () => {
   overlay.classList.remove("show-overlay");
 };
 
-// Renderizar cards en el carrito
+// Renderizar cards en el carrito(template de las cards)
 const templateCardCarro = (card) => {
   const { id, nombre, imagen, precio, descripcion, category } = cartDestino;
   return `
@@ -158,12 +163,25 @@ const templateCardCarro = (card) => {
   `;
 };
 
-const renderCard = () => {
-  if (!card.lenght) {
-    divCarro.innerHTML = `<p class="pCarroVacio"> No hay productos en el carrito.</p>`;
+// renderizar las cards con el template anterior, si el carrito esta vacio mostrar msj
+const renderCardCarrito = () => {
+  if (!cart.lenght) {
+    cartContainer.innerHTML = `<p class="pCarroVacio"> No hay productos en el carrito.</p>`;
     return;
   }
-  divCarro.innerHTML = card.map(templateCardCarro).join("");
+  cartContainer.innerHTML = cart.map(templateCardCarro).join("");
+};
+
+// Precio del total en el carrito
+const totalCarrito = () => {
+  return cart.reduce((acc, cur) => {
+    return acc + Number(cur.precio) * cur.quantity;
+  }, 0);
+};
+
+// Mostrar el total en el carrito
+const showTotal = () => {
+  total.innerHTML = `$${totalCarrito().toFixed(2)}`;
 };
 
 const init = () => {
@@ -174,7 +192,8 @@ const init = () => {
   menuResponsive.addEventListener("click", ocultarMenuClickEnlace);
   window.addEventListener("scroll", ocultarOnScroll);
   overlay.addEventListener("click", ocultarOnClickAfuera);
-  document.addEventListener("DOMContentLoaded", renderCard);
+  document.addEventListener("DOMContentLoaded", renderCardCarrito);
+  document.addEventListener("DOMContentLoaded", showTotal);
 };
 
 init();

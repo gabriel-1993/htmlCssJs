@@ -256,14 +256,6 @@ nav {
   transition: transform 1s ease;
 }
 
-#cart-toggle {
-  display: none;
-}
-
-#cart-toggle:checked + .divcarro {
-  display: flex;
-}
-
 /*---------------------------------------     USUARIOS  login.html    --------------------------------------*/
 .section-login {
   margin-top: 75px;
@@ -568,26 +560,37 @@ main {
   align-items: center;
   background-color: var(--color5);
 }
+/* div botones de categorias */
+.categorias {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  gap: 10px;
+}
 .categories {
   display: flex;
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .category {
-  background-color: var(--color2);
-  width: 100px;
-  padding: 7px 0;
+  background-color: var(--color3);
+  width: auto;
+  padding: 6px 10px;
   border: none;
   color: var(--background);
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 .category:hover {
   cursor: pointer;
 }
 .active {
-  background-color: red;
+  background-color: #ff6347;
+  transition: transform 1s ease;
+  transform: scale(1.05);
 }
 .divdestinos {
   min-height: 100vh;
@@ -604,11 +607,15 @@ main {
   height: 310px;
   width: 370px;
   background-color: var(--color5);
-  transition: transform 1s ease;
+  transition: transform 0.8s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-destino:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .card-destino-down {
@@ -621,7 +628,7 @@ main {
 .card-destino-down h3 {
   font-weight: 700;
   font-size: 28px;
-  color: var(--color3);
+  color: #ff6347;
   display: flex;
   justify-content: center;
   letter-spacing: 1.5px;
@@ -631,32 +638,39 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 5px;
 }
 
 .down-items-1 {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 2px;
 }
 
-.down-items-1 p {
-  font-weight: 800;
-  font-size: 16px;
-  color: var(--color6);
+.pDescripcion {
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--color3);
+  text-align: initial;
+  width: 100%;
+  letter-spacing: 1px;
 }
-
+.pPrecioPersona {
+  font-size: 13px;
+  color: var(--color4);
+  letter-spacing: 2px;
+  font-weight: 600;
+}
 .down-items-1 span {
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--color6);
+  font-weight: 600;
+  font-size: 25px;
+  color: #ff6347;
 }
 
 .down-items button {
-  padding: 8px 16px;
-  border-radius: 10px;
+  padding: 6px 8px;
+  border-radius: 16px;
   border: none;
-  background: var(--color3);
+  background: var(--color2);
   font-size: 18px;
   font-weight: 700;
   color: #fff;

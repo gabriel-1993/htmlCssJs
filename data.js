@@ -38,7 +38,7 @@ const destinosList = [
     nombre: "Peru",
     imagen: "./assets/img/peru.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "America",
   },
   {
@@ -46,7 +46,7 @@ const destinosList = [
     nombre: "Italia",
     imagen: "./assets/img/italia.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "Europa",
   },
   {
@@ -54,7 +54,7 @@ const destinosList = [
     nombre: "Brasil",
     imagen: "./assets/img/brasil.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "America",
   },
   {
@@ -62,7 +62,7 @@ const destinosList = [
     nombre: "Venecia",
     imagen: "./assets/img/venecia.avif",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "Europa",
   },
   {
@@ -70,7 +70,7 @@ const destinosList = [
     nombre: "Venezuela",
     imagen: "./assets/img/venezuela.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "America",
   },
   {
@@ -78,7 +78,7 @@ const destinosList = [
     nombre: "Perito Moreno",
     imagen: "./assets/img/patagonia.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "America",
   },
   {
@@ -86,7 +86,7 @@ const destinosList = [
     nombre: "Misiones",
     imagen: "./assets/img/cataratas.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "America",
   },
   {
@@ -94,7 +94,7 @@ const destinosList = [
     nombre: "Bariloche",
     imagen: "./assets/img/bariloche.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "America",
   },
   {
@@ -102,7 +102,7 @@ const destinosList = [
     nombre: "Egipto",
     imagen: "./assets/img/egipto.jpg",
     precio: 845,
-    descripcion: "7 Dias, hospedaje y viaje ",
+    descripcion: "7 dias y 6 noches,incluye impuestos, tasas y cargos",
     category: "Africa",
   },
 ];
@@ -115,15 +115,20 @@ const cardTemplate = (destino) => {
           <h3>${destino.nombre}</h3>
           <div class="down-items">
           <div class="down-items-1">
-          <p>${destino.descripcion}</p>
+          <p class="pDescripcion">${destino.descripcion}</p>
+          <p class="pPrecioPersona">Precio por persona</p>
           <span> $${destino.precio}</span>
+      
+
+         
+
           </div>
           <button class="btn"
                   data-id="${destino.id}"
                   data-nombre="${destino.nombre}"
                   data-precio="${destino.precio}"
                   data-imagen="${destino.imagen}"
-                  >Comprar</button>
+                  >Agregar</button>
       </div>
     </div>
   </div>
