@@ -21,9 +21,9 @@ const listaCategorias = document.querySelectorAll(".category");
 
 // LocalStorage
 // BUSCAR Y GUARDAR EN localStorage(carrito)
-// let card = JSON.parse(localStorage.getItem("card")) || [];
-// const saveLocalStorage = (cardList) => {};
-// localStorage.setItem("card", JSON.stringify(cardList));
+let card = JSON.parse(localStorage.getItem("card")) || [];
+const saveLocalStorage = (cardList) => {};
+localStorage.setItem("card", JSON.stringify(cardList));
 
 // Renderizar destinos por categoria ,si no hay categoria renderizar todos.
 const renderizarCards = (category = undefined) => {
