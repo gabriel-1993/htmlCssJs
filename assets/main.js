@@ -21,9 +21,9 @@ const listaCategorias = document.querySelectorAll(".category");
 
 // LocalStorage
 // BUSCAR Y GUARDAR EN localStorage(carrito)
-// let cart = JSON.parse(localStorage.getItem("cart")) || [];
-// const saveLocalStorage = (cartList) => {};
-// localStorage.setItem("cart", JSON.stringify(cartList));
+// let card = JSON.parse(localStorage.getItem("card")) || [];
+// const saveLocalStorage = (cardList) => {};
+// localStorage.setItem("card", JSON.stringify(cardList));
 
 // Renderizar destinos por categoria ,si no hay categoria renderizar todos.
 const renderizarCards = (category = undefined) => {
@@ -122,6 +122,50 @@ const ocultarOnClickAfuera = () => {
   overlay.classList.remove("show-overlay");
 };
 
+// Renderizar cards en el carrito
+const templateCardCarro = (card) => {
+  const { id, nombre, imagen, precio, descripcion, category } = cartDestino;
+  return `
+  <div class="cart-item">
+  <img
+    src=${img}
+    alt="paisaje"
+    class="carro-imgvene"
+  />
+  <div class="item-info">
+    <div class="item-bid-info">
+      <h3 class="item-title">${nombre}</h3>
+      <p class="item-bid">${descripcion}</p>
+      <p class="item-bid">1 Persona</p>
+    </div>
+    <div class="item-bid-price">
+      <span class="item-price">${precio}</span>
+    </div>
+  </div>
+  <div class="item-handler">
+    <span class="quantity-handler down btn-" data-id=${id}>-</span>
+    <span class="quantity-handler cant-per">${quantity}</span>
+    <span class="quantity-handler up btn" data-id=${id}>+</span>
+  </div>
+</div>
+<span class="divider"></span>
+<div class="card-total">
+  <p>Total</p>
+  <span>$845</span>
+</div>
+<button class="btn-add btn">Confirmar compra</button>
+</div>
+  `;
+};
+
+const renderCard = () => {
+  if (!card.lenght) {
+    divCarro.innerHTML = `<p class="pCarroVacio"> No hay productos en el carrito.</p>`;
+    return;
+  }
+  divCarro.innerHTML = card.map(templateCardCarro).join("");
+};
+
 const init = () => {
   renderizarCards();
   btnsCategorias.addEventListener("click", aplicarFiltro);
@@ -130,6 +174,7 @@ const init = () => {
   menuResponsive.addEventListener("click", ocultarMenuClickEnlace);
   window.addEventListener("scroll", ocultarOnScroll);
   overlay.addEventListener("click", ocultarOnClickAfuera);
+  document.addEventListener("DOMContentLoaded", renderCard);
 };
 
 init();

@@ -82,6 +82,26 @@ nav {
   font-weight: 600;
   cursor: pointer;
   color: var(--color1);
+  position: relative;
+}
+/* burbuja del carro */
+.carro-burbuja {
+  border: solid var(--color3) 2px;
+  background-color: var(--color3);
+  color: var(--background);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  height: 18px;
+  width: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1px;
+  border-radius: 50%;
 }
 
 .divcarro {
@@ -265,8 +285,8 @@ nav {
   width: min(70%, 1000px);
   background-image: linear-gradient(
     to bottom,
-    rgb(235, 226, 226, 0.5),
-    rgb(161, 161, 161, 0.5)
+    rgb(235, 226, 226, 0.9),
+    rgb(161, 161, 161, 0.8)
   );
 }
 
@@ -289,42 +309,44 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 15px;
 }
 /* DIV:USUARIO CONTRASEÑA */
 .divIniciar div div {
   width: min(70%, 600px);
 }
 .divIniciar h2 {
-  color: var(--color1);
-  font-weight: 800;
+  color: var(--color3);
+  font-weight: 600;
   font-size: 2rem;
 }
 
 .btn-contraseña {
-  padding: 8px 15px;
-  background-color: var(--color1);
-  border-radius: 9px;
+  padding: 6px 15px;
+  background-color: var(--color4);
+  border-radius: 6px;
   border: none;
   color: var(--color5);
   font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .btn-Iniciar {
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 7px 60px;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 6px 25px;
   color: var(--color5);
   background: var(--color3);
   border: none;
-  border-radius: 13px;
+  border-radius: 7px;
+  letter-spacing: 4px;
 }
 
 /*--------- REGISTRARSE -----------*/
 
 .divRegistrarse h2 {
-  color: var(--color1);
-  font-weight: 800;
+  color: var(--color3);
+  font-weight: 600;
   font-size: 2rem;
 }
 
@@ -361,34 +383,26 @@ nav {
 }
 
 .label-registrarse {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color1);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color3);
 }
-
-.btn-leer {
-  padding: 5px 60px;
-  font-size: 0.8rem;
-  background-color: var(--color1);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  letter-spacing: 4px;
+#checkbox1:hover {
   cursor: pointer;
-  font-weight: 400;
 }
 
 .submit-registro {
-  padding: 7px 50px;
-  font-size: 1.2rem;
-  font-weight: 500;
+  padding: 6px 20px;
+  font-size: 1rem;
+  font-weight: 400;
   background-color: var(--color3);
-  color: #fff;
+  color: var(--background);
   border: none;
-  border-radius: 13px;
+  border-radius: 7px;
   letter-spacing: 4px;
   cursor: pointer;
 }
+
 /*  --------------------------------------     HERO    ----------------------------------- */
 main {
   min-height: 100vh;

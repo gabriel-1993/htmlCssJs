@@ -114,12 +114,8 @@
   }
 
   .label-registrarse {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     width: 100%;
-  }
-
-  .btn-leer {
-    letter-spacing: 4px;
   }
 
   .submit-registro {
@@ -261,21 +257,21 @@
     height: 50%;
     width: min(100%, 500px);
   }
-  .btn-contraseña,
-  .btn-leer {
+  .btn-contraseña {
     padding: 5px 9px;
-    background-color: var(--color1);
+    background-color: var(--color4);
     border-radius: 7px;
     border: none;
     color: var(--color5);
     font-size: 0.7rem;
+    font-weight: 200;
   }
   .btn-Iniciar,
   .submit-registro {
     font-size: 0.9rem;
-    font-weight: 700;
-    padding: 4px 13px;
-    border-radius: 13px;
+    font-weight: 400;
+    padding: 5px 13px;
+    border-radius: 7px;
   }
 }
 
@@ -405,9 +401,10 @@
     gap: 8px;
   }
 
-  .submit-contacto {
-    width: 100%;
-    padding: 10px 20px;
+  .submit-registro,
+  .btn-Iniciar {
+    width: 70%;
+    padding: 7px 20px;
   }
 
   /* -----------------------------------------------     FOOTER     ----------------------------------------- */

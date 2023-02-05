@@ -85,7 +85,8 @@ html {
   color: #f1f1f1;
   background: #ff6347;
   border: none;
-  transform: scale(1.1);
+  transform: scale(0.9);
+  cursor: pointer;
 }
 
 /* Animacion para hero aparecer texto o div*/
