@@ -182,7 +182,7 @@
   }
 
   .dimg {
-    height: 290px;
+    height: 250px;
     width: 470px;
   }
 
@@ -357,10 +357,11 @@
 
   .card-destino-down {
     height: 100px;
+    width: 100%;
   }
 
   .down-items-1 {
-    gap: 3px;
+    gap: 1px;
   }
 
   .dimg {
