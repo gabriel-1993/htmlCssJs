@@ -358,11 +358,11 @@
   .card-destino-down {
     height: 100px;
     width: 100%;
-    padding-top: 1px;
+    padding-top: 0.5px;
   }
 
   .down-items-1 {
-    gap: 1px;
+    gap: 0.7px;
   }
 
   .dimg {
