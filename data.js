@@ -123,7 +123,7 @@ const cardTemplate = (destino) => {
          
 
           </div>
-          <button class="btn"
+          <button class="btn btn-add"
                   data-id="${destino.id}"
                   data-nombre="${destino.nombre}"
                   data-precio="${destino.precio}"

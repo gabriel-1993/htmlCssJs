@@ -6,12 +6,17 @@ const cardContainer = document.querySelector(".card-destino");
 const boton = document.getElementById(`agregar$(destino.id)`);
 // capturar logo del carro
 const logoCarro = document.querySelector(".cart-icon");
+// capturar burbuja del carrito
+const burbujaCarro = document.querySelector(".carro-burbuja");
 // capturar div general del carro de compras
 const divCarro = document.querySelector(".divcarro");
 // capturar div para renderizar cards en el carrito
 const cartContainer = document.querySelector(".cart-container");
 // capturar el total del carrito
 const precioTotal = document.querySelector(".total");
+// capturar boton comprar y vaciar carrito del carrito
+const btnComprar = document.querySelector(".btn-buy");
+const btnVaciar = document.querySelector(".btn-delete");
 // capturar navbarlist responsive
 const menuResponsive = document.querySelector(".navbar-list");
 // capturar logo menu hamburguesa
@@ -20,6 +25,8 @@ const logoMenuResponsive = document.querySelector(".menu-icon");
 const btnsCategorias = document.querySelector(".categorias");
 //  Overlay para tirar facha abajo del menú hamburguesa y el cart.
 const overlay = document.querySelector(".overlay");
+// Capturar div para mostrar msj al agregar algo al carrito
+const successModal = document.querySelector(".add-modal");
 
 const listaCategorias = document.querySelectorAll(".category");
 
@@ -128,44 +135,31 @@ const ocultarOnClickAfuera = () => {
 };
 
 // Renderizar cards en el carrito(template de las cards)
-const templateCardCarro = (card) => {
-  const { id, nombre, imagen, precio, descripcion, category } = cartDestino;
+const templateCardCarro = (destinoCard) => {
+  const { id, nombre, imagen, precio, quantity } = destinoCard;
   return `
   <div class="cart-item">
-  <img
-    src=${img}
-    alt="paisaje"
-    class="carro-imgvene"
-  />
-  <div class="item-info">
-    <div class="item-bid-info">
+    <img src=${imagen} alt="paisaje destino del carrito" />
+    <div class="item-info">
       <h3 class="item-title">${nombre}</h3>
-      <p class="item-bid">${descripcion}</p>
-      <p class="item-bid">1 Persona</p>
+      <p class="item-bid">7 dias y 6 noches,incluye impuestos, tasas y cargos</p>
+      <div class="divPrecioCart"> 
+      <p class="pPrecioCart">Precio por persona</p>
+      <span class="item-price">$${precio}</span>
+      </div>
     </div>
-    <div class="item-bid-price">
-      <span class="item-price">${precio}</span>
+    <div class="item-handler">
+      <span class="quantity-handler down" data-id=${id}>-</span>
+      <span class="item-quantity">${quantity}</span>
+      <span class="quantity-handler up" data-id=${id}>+</span>
     </div>
   </div>
-  <div class="item-handler">
-    <span class="quantity-handler down btn-" data-id=${id}>-</span>
-    <span class="quantity-handler cant-per">${quantity}</span>
-    <span class="quantity-handler up btn" data-id=${id}>+</span>
-  </div>
-</div>
-<span class="divider"></span>
-<div class="card-total">
-  <p>Total</p>
-  <span>$845</span>
-</div>
-<button class="btn-add btn">Confirmar compra</button>
-</div>
   `;
 };
 
 // renderizar las cards con el template anterior, si el carrito esta vacio mostrar msj
 const renderCardCarrito = () => {
-  if (!cart.lenght) {
+  if (!cart.length) {
     cartContainer.innerHTML = `<p class="pCarroVacio"> No hay productos en el carrito.</p>`;
     return;
   }
@@ -181,7 +175,85 @@ const totalCarrito = () => {
 
 // Mostrar el total en el carrito
 const showTotal = () => {
-  total.innerHTML = `$${totalCarrito().toFixed(2)}`;
+  precioTotal.innerHTML = `$${totalCarrito().toFixed(2)}`;
+};
+
+// renderizar cantidad en la burbuja del carrito
+
+const renderizarBurbuja = () => {
+  burbujaCarro.textContent = cart.reduce((acc, cur) => {
+    return acc + cur.quantity;
+  }, 0);
+};
+
+// Mostrar ocultar btn comprar y vaciar del carrito
+
+const desabilitarBtn = (btn) => {
+  if (!cart.length) {
+    btn.classList.add("disabled");
+  } else {
+    btn.classList.remove("disabled");
+  }
+};
+// pasar datos a un objeto
+const productData = (id, nombre, precio, imagen) => {
+  return { id, nombre, precio, imagen };
+};
+// estado del carrito si algo cambia que se actualize
+const estadoCarrito = () => {
+  saveLocalStorage(cart);
+  renderCardCarrito();
+  showTotal();
+  desabilitarBtn(btnComprar);
+  desabilitarBtn(btnVaciar);
+  renderizarBurbuja();
+};
+
+// agregar producto al carrito
+
+const agregarAlCarrito = (e) => {
+  if (!e.target.classList.contains("btn-add")) {
+    return;
+  }
+  const { id, nombre, precio, imagen } = e.target.dataset;
+  const product = productData(id, nombre, precio, imagen);
+  if (agregarOaumentarProducto(product)) {
+    agregarCantidadCart(product);
+    msjAgregadoCarrito("Se agrego una unidad al carrito");
+  } else {
+    crearCartProduct(product);
+    msjAgregadoCarrito("Se agrego al carrito");
+  }
+  estadoCarrito();
+};
+
+// confirmar que el producto no exista en el carrito,si existe, agregar cantidad al existente
+const agregarOaumentarProducto = (product) => {
+  return cart.find((item) => {
+    return item.id === product.id;
+  });
+};
+
+// agregar cantidad a producto ya existente en el carrito
+const agregarCantidadCart = (product) => {
+  cart = cart.map((cartProduct) => {
+    return cartProduct.id === product.id
+      ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+      : cartProduct;
+  });
+};
+// mostrar mensaje cuando se agrege algo al carrito
+const msjAgregadoCarrito = (msj) => {
+  successModal.classList.add("active-modal");
+  successModal.textContent = msj;
+  setTimeout(() => {
+    successModal.classList.remove("active-modal");
+  }, 1500);
+};
+
+// crear card si aun no existe en el carrito
+const crearCartProduct = (product) => {
+  cart = [...cart, { ...product, quantity: 1 }];
 };
 
 const init = () => {
@@ -194,6 +266,10 @@ const init = () => {
   overlay.addEventListener("click", ocultarOnClickAfuera);
   document.addEventListener("DOMContentLoaded", renderCardCarrito);
   document.addEventListener("DOMContentLoaded", showTotal);
+  divDestinos.addEventListener("click", agregarAlCarrito);
+  document.addEventListener("DOMContentLoaded", renderizarBurbuja);
+  desabilitarBtn(btnComprar);
+  desabilitarBtn(btnVaciar);
 };
 
 init();

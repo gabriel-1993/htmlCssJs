@@ -114,12 +114,13 @@ nav {
     rgb(235, 226, 226),
     rgb(161, 161, 161)
   );
+  display: flex;
+
   flex-direction: column;
   gap: 30px;
   height: 100vh;
   z-index: 2;
   overflow-y: scroll;
-  display: flex;
   transform: translate(200%);
   transition: all 0.3s cubic-bezier(0.92, 0.01, 0.35, 0.99);
 }
@@ -138,17 +139,66 @@ nav {
   display: none;
 }
 
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
 .cart-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
   border: solid 2px var(--color5);
   border-radius: 15px;
 }
 
-.item-info {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+.cart-item img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: none;
+  height: 150px;
+  width: 297px;
 }
 
+.item-bid {
+  color: var(--color3);
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.divPrecioCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+.pPrecioCart {
+  color: #ff6347;
+  font-weight: 500;
+}
+
+.item-price {
+  color: #ff6347;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  padding-top: 2px;
+}
+.item-quantity {
+  color: #ff6347;
+}
 .item-bid-info {
   display: flex;
   flex-direction: column;
@@ -161,7 +211,7 @@ nav {
 }
 
 .item-bid-price span {
-  color: var(--color1);
+  color: #ff6347;
   font-weight: 600;
   font-size: 1.4rem;
 }
@@ -186,14 +236,10 @@ nav {
 
 .item-title {
   color: var(--color3);
-  font-weight: 800;
-  font-size: 19px;
-}
-
-.item-bid {
-  color: var(--color1);
-  font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
 }
 
 .item-handler {
@@ -212,6 +258,13 @@ nav {
   color: #fff;
   font-weight: 400;
   margin-bottom: 15px;
+}
+
+.down {
+  background: #ff6347;
+  cursor: pointer;
+  color: var(--background);
+  transition: transform 1s ease;
 }
 
 .up {
@@ -245,6 +298,34 @@ nav {
   font-weight: 600;
   font-size: 18px;
 }
+.carroDivBotones {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.btn-buy {
+  border: none;
+  border-radius: 8px;
+  width: 70%;
+  background-color: var(--color3);
+  color: var(--background);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 20px;
+}
+.btn-delete {
+  border: none;
+  border-radius: 8px;
+  width: 70%;
+  background-color: var(--color6);
+  color: var(--background);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 4px 20px;
+}
 .btn-add {
   padding: 14px;
   color: var(--color5);
@@ -254,6 +335,32 @@ nav {
   border: none;
   cursor: pointer;
   transition: transform 1s ease;
+}
+/* ocultar visualmente boton comprar del carrito si no hay productos agregados 
+ */
+.disabled {
+  cursor: not-allowed;
+  background-color: var(--color4);
+  color: var(--background);
+}
+
+/* mostrar msj al agregar una compra al carrito */
+.add-modal {
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--background);
+  background-color: var(--color3);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  transition: all 0.5s ease-out;
+  transform: translateY(200%);
+}
+.active-modal {
+  transform: translateY(0);
+  transition: all 0.5s ease-in;
 }
 
 /*---------------------------------------     USUARIOS  login.html    --------------------------------------*/
