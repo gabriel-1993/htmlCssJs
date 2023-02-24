@@ -256,6 +256,82 @@ const crearCartProduct = (product) => {
   cart = [...cart, { ...product, quantity: 1 }];
 };
 
+// Restar una unidad a un producto en el carrito , si tiene una unidad: preguntar antes de eliminarlo
+const handleMinusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => {
+    return item.id === id;
+  });
+  if (existingCartProduct.quantity === 1) {
+    if (window.confirm("¿Desea eliminar el producto?")) {
+      removeProductCart(existingCartProduct);
+    }
+    return;
+  }
+  substractProductUnit(existingCartProduct);
+};
+// Eliminar producto del carrito al confirmar que se desea eliminar( la funcion esta en una linea por eso permine agregar estadoCarrito al final)
+const removeProductCart = (existingProduct) => {
+  cart = cart.filter((product) => product.id !== existingProduct.id);
+  estadoCarrito();
+};
+
+// Disminuir la cantidad de un producto en el carrito
+const substractProductUnit = (existingProduct) => {
+  cart = cart.map((product) => {
+    return product.id === existingProduct.id
+      ? {
+          ...product,
+          quantity: Number(product.quantity) - 1,
+        }
+      : product;
+  });
+};
+
+// Sumar una unidad a un producto en el carrito
+const handlePlusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => {
+    return item.id === id;
+  });
+  agregarCantidadCart(existingCartProduct);
+};
+
+const handleQuantity = (e) => {
+  if (e.target.classList.contains("down")) {
+    handleMinusBtnEvent(e.target.dataset.id);
+  } else if (e.target.classList.contains("up")) {
+    handlePlusBtnEvent(e.target.dataset.id);
+  }
+  estadoCarrito();
+};
+
+// Quitar cards del carrito
+const resetearCarrito = (e) => {
+  cart = [];
+  estadoCarrito();
+};
+
+// vaciar el carrito por compra o vaciar carrito(el primer if sirve por si nos eliminan el disabled del boton)
+const vaciarOcomprarCarrito = (msjParaConfirmar, msjAlert) => {
+  if (!cart.length) return;
+  if (window.confirm(msjParaConfirmar)) {
+    resetearCarrito();
+    alert(msjAlert);
+  }
+};
+
+const completarCompra = () => {
+  vaciarOcomprarCarrito(
+    "¿Desea confirmar su compra?",
+    "¡Gracias por su compra!"
+  );
+};
+
+const borrarProductosCarrito = () => {
+  vaciarOcomprarCarrito(
+    "¿Desea eliminar todos los productos del carrito?",
+    "¡Todos los productos han sido eliminados!"
+  );
+};
 const init = () => {
   renderizarCards();
   btnsCategorias.addEventListener("click", aplicarFiltro);
@@ -268,6 +344,9 @@ const init = () => {
   document.addEventListener("DOMContentLoaded", showTotal);
   divDestinos.addEventListener("click", agregarAlCarrito);
   document.addEventListener("DOMContentLoaded", renderizarBurbuja);
+  cartContainer.addEventListener("click", handleQuantity);
+  btnComprar.addEventListener("click", completarCompra);
+  btnVaciar.addEventListener("click", borrarProductosCarrito);
   desabilitarBtn(btnComprar);
   desabilitarBtn(btnVaciar);
 };
